@@ -6,7 +6,7 @@
 /*   By: rafaelfe <rafaelfe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 20:02:04 by rafaelfe          #+#    #+#             */
-/*   Updated: 2025/01/11 20:09:23 by rafaelfe         ###   ########.fr       */
+/*   Updated: 2025/01/11 20:33:07 by rafaelfe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@ int	main(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
-	ft_print("Hello, World!");
+	mlx_init();
+
 }
