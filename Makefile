@@ -1,8 +1,8 @@
 
 NAME= so_long
-
 CC= cc
-CFLAGS= -g -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror -I $(INCLUDES)
+LDFLAGS =  -L $(LIBFT_DIR) -lft -L $(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm
 INCLUDES= ./includes
 LIBFT_DIR= ./libs/libft
 MLX_DIR= ./libs/mlx
@@ -10,14 +10,14 @@ MLX= $(MLX_DIR)/libmlx.a
 LIBFT= $(LIBFT_DIR)/libft.a
 SRCS_DIR= ./srcs
 
-SRCS= $(SRCS_DIR)/so_long.c
+SRCS= $(SRCS_DIR)/so_long.c $(SRCS_DIR)/input_handler.c $(SRCS_DIR)/free_displays.c
 
 OBJS=$(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME) : $(OBJS) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) -I $(INCLUDES) $(OBJS) -L $(LIBFT_DIR) -lft -L $(MLX_DIR) -lmlx -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -I $(INCLUDES) -c $^ -o $@
@@ -31,6 +31,7 @@ $(MLX):
 clean:
 	rm -rf $(OBJS)
 	make clean -C $(LIBFT_DIR)
+	make clean -C $(MLX_DIR)
 
 fclean: clean
 	rm -rf $(NAME)

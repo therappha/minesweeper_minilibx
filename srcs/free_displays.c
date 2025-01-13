@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   free_displays.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rafaelfe <rafaelfe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/11 20:02:04 by rafaelfe          #+#    #+#             */
-/*   Updated: 2025/01/13 03:09:13 by rafaelfe         ###   ########.fr       */
+/*   Created: 2025/01/13 02:44:16 by rafaelfe          #+#    #+#             */
+/*   Updated: 2025/01/13 02:46:51 by rafaelfe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-
-
-int	main(void)
+void	free_displays(t_win *win)
 {
-	t_win win;
-
-	win.mlx_ptr = mlx_init();
-	win.win_ptr = mlx_new_window(win.mlx_ptr, 800, 600, "so_long");
-	mlx_key_hook(win.win_ptr, key_input_handler, &win);
-	mlx_loop(win.mlx_ptr);
-	mlx_destroy_window(win.mlx_ptr, win.win_ptr);
-	mlx_destroy_display(win.mlx_ptr);
-	free(win.mlx_ptr);
+	mlx_destroy_window(win -> mlx_ptr, win -> win_ptr);
+	mlx_destroy_display(win -> mlx_ptr);
+	free(win -> mlx_ptr);
+	exit(1);
 }
