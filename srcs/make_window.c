@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_window.c                                       :+:      :+:    :+:   */
+/*   make_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rafaelfe <rafaelfe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 22:14:32 by rafaelfe          #+#    #+#             */
-/*   Updated: 2025/01/13 22:15:35 by rafaelfe         ###   ########.fr       */
+/*   Updated: 2025/01/14 20:53:08 by rafaelfe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	make_window(void)
 	if (!win.win_ptr)
 		free_displays(&win);
 	mlx_key_hook(win.win_ptr, key_input, &win);
-	mlx_hook(win.win_ptr, 17, 0, free_displays, &win);
+	mlx_hook(win.win_ptr, DestroyNotify, 0L, free_displays, &win);
 	//mlx_mouse_hook(win.win_ptr, mouse_input, &win);
 	mlx_loop(win.mlx_ptr);
 	free_displays(&win);

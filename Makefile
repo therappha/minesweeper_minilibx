@@ -10,33 +10,37 @@ MLX= $(MLX_DIR)/libmlx.a
 LIBFT= $(LIBFT_DIR)/libft.a
 SRCS_DIR= ./srcs
 
-SRCS= $(SRCS_DIR)/so_long.c $(SRCS_DIR)/input_handler.c $(SRCS_DIR)/free_displays.c \
+SRCS= $(SRCS_DIR)/main.c $(SRCS_DIR)/input_handler.c $(SRCS_DIR)/free_displays.c \
 $(SRCS_DIR)/make_window.c
 
 OBJS=$(SRCS:.c=.o)
 
 all: $(NAME)
+	@echo "Compilation Done, execute with ./so_long <map>!"
 
 $(NAME) : $(OBJS) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
+	@echo "Compiling game!"
 
 %.o : %.c
-	$(CC) $(CFLAGS) -I $(INCLUDES) -c $^ -o $@
+	@$(CC) $(CFLAGS) -I $(INCLUDES) -c $^ -o $@
 
 $(LIBFT):
-	make -C $(LIBFT_DIR)
+	@make -C $(LIBFT_DIR) --no-print-directory
+
 
 $(MLX):
-	make -C $(MLX_DIR)
+	@make -C $(MLX_DIR) --no-print-directory
 
 clean:
-	rm -rf $(OBJS)
-	make clean -C $(LIBFT_DIR)
-	make clean -C $(MLX_DIR)
-
+	@rm -rf $(OBJS)
+	@make clean -C $(LIBFT_DIR) --no-print-directory
+	@make clean -C $(MLX_DIR) --no-print-directory
+	@echo "Cleaning Objects!"
 fclean: clean
-	rm -rf $(NAME)
-	make fclean -C $(LIBFT_DIR)
+	@rm -rf $(NAME)
+	@make fclean -C $(LIBFT_DIR) --no-print-directory
+	@echo "Cleaning Objects and game!"
 
 re: fclean all
 
