@@ -10,7 +10,8 @@ MLX= $(MLX_DIR)/libmlx.a
 LIBFT= $(LIBFT_DIR)/libft.a
 SRCS_DIR= ./srcs
 
-SRCS= $(SRCS_DIR)/so_long.c $(SRCS_DIR)/input_handler.c $(SRCS_DIR)/free_displays.c
+SRCS= $(SRCS_DIR)/so_long.c $(SRCS_DIR)/input_handler.c $(SRCS_DIR)/free_displays.c \
+$(SRCS_DIR)/make_window.c
 
 OBJS=$(SRCS:.c=.o)
 
