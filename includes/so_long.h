@@ -6,7 +6,7 @@
 /*   By: rafaelfe <rafaelfe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 20:03:19 by rafaelfe          #+#    #+#             */
-/*   Updated: 2025/01/14 02:36:05 by rafaelfe         ###   ########.fr       */
+/*   Updated: 2025/01/20 15:48:16 by rafaelfe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ typedef struct s_point
 int		key_input(int keysym, t_win *win);
 int		free_displays(t_win *win);
 int		mouse_input(int keysym, t_win *win);
-int		make_window(void);
+int		make_window(t_win *win);
+
 #endif
