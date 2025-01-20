@@ -6,7 +6,7 @@
 /*   By: rafaelfe <rafaelfe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 20:03:19 by rafaelfe          #+#    #+#             */
-/*   Updated: 2025/01/20 15:48:16 by rafaelfe         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:58:33 by rafaelfe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ typedef struct s_win
 	void	*win_ptr;
 	void	*mlx_ptr;
 }	t_win;
+
+typedef struct s_game
+{
+	int		x;
+	int		y;
+	void	*img_wall;
+	void	*img_ground;
+}	t_game;
 
 typedef struct s_point
 {
