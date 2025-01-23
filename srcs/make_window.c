@@ -6,7 +6,7 @@
 /*   By: rafaelfe <rafaelfe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 22:14:32 by rafaelfe          #+#    #+#             */
-/*   Updated: 2025/01/20 16:55:49 by rafaelfe         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:43:31 by rafaelfe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ int	make_window(t_win *win)
 	if (!win -> win_ptr)
 		free_displays(win);
 	mlx_key_hook(win -> win_ptr, key_input, win);
-	mlx_hook(win -> win_ptr, DestroyNotify, 0L, free_displays, &win);
+	mlx_hook(win -> win_ptr, DestroyNotify, 0L, free_displays, win);
 	//mlx_mouse_hook(win.win_ptr, mouse_input, &win);
-
 	return (0);
 }
 
