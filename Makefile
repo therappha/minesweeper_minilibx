@@ -11,7 +11,7 @@ LIBFT= $(LIBFT_DIR)/libft.a
 SRCS_DIR= ./srcs
 
 SRCS= $(SRCS_DIR)/main.c $(SRCS_DIR)/input_handler.c $(SRCS_DIR)/free_displays.c \
-$(SRCS_DIR)/make_window.c $(SRCS_DIR)/load_images.c
+$(SRCS_DIR)/make_window.c $(SRCS_DIR)/load_images.c $(SRCS_DIR)/board.c $(SRCS_DIR)/bombs.c
 
 OBJS=$(SRCS:.c=.o)
 

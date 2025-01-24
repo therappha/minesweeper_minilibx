@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   minesweeper.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rafaelfe <rafaelfe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 20:03:19 by rafaelfe          #+#    #+#             */
-/*   Updated: 2025/01/23 20:53:23 by rafaelfe         ###   ########.fr       */
+/*   Updated: 2025/01/24 22:35:45 by rafaelfe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef MINESWEEPER_H
+# define MINESWEEPER_H
 
 # include "../libs/libft/includes/libft.h"
 # include "../libs/mlx/mlx.h"
@@ -35,15 +35,21 @@
 #define NUMBER_PATH_6 "textures/sprites/6.xpm"
 #define NUMBER_PATH_7 "textures/sprites/7.xpm"
 #define NUMBER_PATH_8 "textures/sprites/8.xpm"
-#define NUMBER_PATH_9 "textures/sprites/9.xpm"
+
+#define CELL_PATH_32 "textures/sprites/cell_32.xpm"
+#define FLAG_PATH_32 "textures/sprites/flag_32.xpm"
+#define BOMB_PATH_32 "textures/sprites/bomb_32.xpm"
+#define EMPTY_PATH_32 "textures/sprites/empty_32.xpm"
+#define NUMBER_PATH_1_32 "textures/sprites/1_32.xpm"
+#define NUMBER_PATH_2_32 "textures/sprites/2_32.xpm"
+#define NUMBER_PATH_3_32 "textures/sprites/3_32.xpm"
+#define NUMBER_PATH_4_32 "textures/sprites/4_32.xpm"
+#define NUMBER_PATH_5_32 "textures/sprites/5_32.xpm"
+#define NUMBER_PATH_6_32 "textures/sprites/6_32.xpm"
+#define NUMBER_PATH_7_32 "textures/sprites/7_32.xpm"
+#define NUMBER_PATH_8_32 "textures/sprites/8_32.xpm"
 
 #endif
-
-typedef struct s_win
-{
-	void	*win_ptr;
-	void	*mlx_ptr;
-}	t_win;
 
 typedef struct s_images
 {
@@ -68,21 +74,34 @@ typedef struct {
 typedef struct s_game {
 	cell *board;
 	vec2 boardsize;
-	t_win win;
+	int cellsize;
+	void	*win_ptr;
+	void	*mlx_ptr;
 	vec2 *bombs;
 	t_images game_images;
 	int num_bombs;
-	int	map_found;
+	int	mapfound;
 }	t_game;
 
-int		key_input(int keysym, t_win *win);
-int		free_displays(t_win *win);
-int		mouse_input(int keysym, t_game **game);
-int		make_window(t_win *win, int size_x, int size_y);
-int load_images(t_win win, t_images *game_images);
-int	getboardindex(int x, int y, cell *board, vec2 boardsize);
-int	reveal(int currentposx, int currentposy, t_game **game);
-void drawboard(t_game **game);
 
+//MLX
+int		key_input(int keysym,t_game **game);
+int		free_displays(t_game **game);
+int		mouse_input(int keysym, int x, int y, t_game **game);
+int		make_window(t_game **game);
+int		load_images(t_game **game);
+
+//board
+int		getboardindex(int x, int y, cell *board, vec2 boardsize);
+cell	*fillboard(vec2 boardsize, vec2 *bombs);
+void	drawboard(t_game **game);
+int		reveal(int currentposx, int currentposy, t_game **game, int flood_size);
+
+//bombs
+int		checkbombs(int x, int y, vec2 *bombs);
+int		isbomb(int x, int y, vec2 *bombs);
+vec2	*generatebombs(int numbombs, vec2 board);
+
+//
 
 #endif
