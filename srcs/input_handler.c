@@ -6,7 +6,7 @@
 /*   By: rafaelfe <rafaelfe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 02:21:08 by rafaelfe          #+#    #+#             */
-/*   Updated: 2025/01/24 22:31:31 by rafaelfe         ###   ########.fr       */
+/*   Updated: 2025/01/24 23:25:18 by rafaelfe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void left_button(t_game **game, int x, int y);
 
 int	key_input(int keysym, t_game **game)
 {
-	ft_printf("Debug: key_input -> game=%p, \n", (game));
 	if (keysym == XK_Escape)
 		free_displays(game);
 	return (0);
@@ -43,12 +42,10 @@ void right_button(t_game **game, int x, int y)
 
 	if (board[i].revealed == 0)
 	{
-		(*game) -> mapfound++;
 		board[i].revealed = 2;
 	}
 	else if (board[i].revealed == 2)
 	{
-		(*game) -> mapfound--;
 		board[i].revealed = 0;
 	}
 	drawboard(game);
@@ -66,14 +63,15 @@ void left_button(t_game **game, int x, int y)
 		if (board[i].value == -1)
 		{
 			board[i].revealed = 1;
-			ft_printf("KABOOOOM, you lost hahaha!!!");
+			ft_printf("KABOOOOM, you lost hahaha!!!\n");
 			drawboard(game);
+			//free_displays(game);
 		}
 		else if (board[i].revealed == 0)
 		{
 			(*game) -> mapfound += reveal(board[i].pos.x, board[i].pos.y, game, 8);
-			if ((*game) -> mapfound == (*game)->boardsize.x * (*game)->boardsize.y)
-				ft_printf("YOOU WON");
+			if ((*game) -> mapfound == (((*game)->boardsize.x * (*game)->boardsize.y) - (*game) -> num_bombs))
+				ft_printf("YOOU WON!!!\n");
 		}
 	}
 	drawboard(game);

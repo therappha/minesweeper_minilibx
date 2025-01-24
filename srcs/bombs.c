@@ -6,7 +6,7 @@
 /*   By: rafaelfe <rafaelfe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 21:51:47 by rafaelfe          #+#    #+#             */
-/*   Updated: 2025/01/24 21:59:28 by rafaelfe         ###   ########.fr       */
+/*   Updated: 2025/01/24 23:08:01 by rafaelfe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ vec2 *generatebombs(int numbombs, vec2 board)
 		while (isbomb(pos.x, pos.y, bombs)) //Ensures it doenst generate a bomb on a previously generated one
 			pos = randompos(board);
 		bombs[i] = pos;
-		printf("Bomb generated! x: %d, y: %d\n", bombs[i].x, bombs[i].y);
+		//printf("Bomb generated! x: %d, y: %d\n", bombs[i].x, bombs[i].y);
 		i++;
 		bombs[i].x = -1;
 		bombs[i].y = -1;
