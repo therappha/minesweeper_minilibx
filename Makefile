@@ -1,7 +1,7 @@
 
-NAME= so_long
+NAME= game
 CC= cc
-CFLAGS = -g -Wall -Wextra -Werror -I $(INCLUDES)
+CFLAGS = -g  -I $(INCLUDES)
 LDFLAGS =  -L $(LIBFT_DIR) -lft -L $(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm
 INCLUDES= ./includes
 LIBFT_DIR= ./libs/libft
@@ -11,12 +11,13 @@ LIBFT= $(LIBFT_DIR)/libft.a
 SRCS_DIR= ./srcs
 
 SRCS= $(SRCS_DIR)/main.c $(SRCS_DIR)/input_handler.c $(SRCS_DIR)/free_displays.c \
-$(SRCS_DIR)/make_window.c
+$(SRCS_DIR)/make_window.c $(SRCS_DIR)/load_images.c $(SRCS_DIR)/board.c $(SRCS_DIR)/bombs.c
 
 OBJS=$(SRCS:.c=.o)
 
 all: $(NAME)
-	@echo "Compilation Done, execute with ./so_long <map>!"
+	@echo "${GREEN}Project built!${RESET}"
+	@echo "${GREEN}Please use${RESET} ${YELLOW}./game <board size x> <board size y> <number of bombs>${RESET}"
 
 $(NAME) : $(OBJS) $(LIBFT) $(MLX)
 	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
@@ -45,3 +46,7 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+GREEN  := \033[0;32m
+YELLOW := \033[0;33m
+RESET  := \033[0m
