@@ -6,7 +6,7 @@
 /*   By: rafaelfe <rafaelfe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 02:21:08 by rafaelfe          #+#    #+#             */
-/*   Updated: 2025/01/24 23:25:18 by rafaelfe         ###   ########.fr       */
+/*   Updated: 2025/01/25 02:19:46 by rafaelfe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void left_button(t_game **game, int x, int y)
 		}
 		else if (board[i].revealed == 0)
 		{
-			(*game) -> mapfound += reveal(board[i].pos.x, board[i].pos.y, game, 8);
+
+			(*game) -> mapfound += reveal(board[i].pos.x, board[i].pos.y, game, 7);
 			if ((*game) -> mapfound == (((*game)->boardsize.x * (*game)->boardsize.y) - (*game) -> num_bombs))
 				ft_printf("YOOU WON!!!\n");
 		}

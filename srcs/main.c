@@ -6,7 +6,7 @@
 /*   By: rafaelfe <rafaelfe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 20:02:04 by rafaelfe          #+#    #+#             */
-/*   Updated: 2025/01/24 23:25:51 by rafaelfe         ###   ########.fr       */
+/*   Updated: 2025/01/25 02:14:15 by rafaelfe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,10 @@ int	reveal(int currentposx, int currentposy, t_game **game, int flood_size)
 	int	mapfound = 0;
 	cell *board = (*game) -> board;
 
-	vec2 direction[4] = {
-         {0, -1}, {-1,  0}, {+1,  0}, {0, +1},
+	vec2 direction[8] = {
+		{-1, -1}, {0, -1}, {+1, -1},
+		{-1,  0},		   {+1,  0},
+		{-1, +1}, {0, +1}, {+1, +1}
 	};
 	int j = 0;
 	int i = getboardindex(currentposx, currentposy, board, (*game) -> boardsize);
@@ -77,9 +79,9 @@ int	reveal(int currentposx, int currentposy, t_game **game, int flood_size)
 		mapfound++;
 		if (board[i].value == 0)
 		{
-			while (j < 4)
+			while (j < 8)
 			{
-				mapfound += reveal(currentposx + direction[j].x, currentposy + direction[j].y, game, flood_size--);
+				mapfound += reveal(currentposx + direction[j].x, currentposy + direction[j].y, game, flood_size -1);
 				j++;
 			}
 		}
