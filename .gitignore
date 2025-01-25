@@ -1,8 +1,8 @@
 *.o
 
-so_long
 
 *.swp
 
 .vscode
 
+make
