@@ -17,7 +17,9 @@ OBJS=$(SRCS:.c=.o)
 
 all: $(NAME)
 	@echo "${GREEN}Project built!${RESET}"
-	@echo "${GREEN}Please use${RESET} ${YELLOW}./game <board size x> <board size y> <number of bombs>${RESET}"
+	@echo "${GREEN}Execute with ${RESET} ${YELLOW}./game <board size x> <board size y> <number of bombs>${RESET}"
+	@echo "${GREEN}Use${RESET} ${YELLOW}<Left mouse button>${RESET}${GREEN} to reveal cell${RESET}"
+	@echo "${GREEN}Use${RESET} ${YELLOW}<Right mouse button>${RESET}${GREEN} to mark cell${RESET}"
 
 $(NAME) : $(OBJS) $(LIBFT) $(MLX)
 	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
