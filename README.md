@@ -1,7 +1,7 @@
 # 🕵️ Minesweeper (42 MiniLibX)
 
 This is a **Minesweeper** game built using the **MiniLibX** library from **42 School**.\
-The project was created as a learning experience with MiniLibX and currently works **only on Linux**.\
+The project is an adaptation of my previous terminal_minesweeper, but now I adapted it as a graphical game as a learning experience with MiniLibX and currently works **only on Linux**.\
 When you win or lose it only shows a message in terminal and does nothing, you need to manualy close!
 
 ---
